@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Itegration extends Model
+class Integration extends Model
 {
     protected $guarded = [];
 }
