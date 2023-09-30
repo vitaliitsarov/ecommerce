@@ -1,0 +1,38 @@
+<Root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Data>
+        <Record>
+            <kod>1-00300265</kod>
+            <nazwa>BDSM-BESTSELLER - DIVARICATORE VAGINALE DOCTOR JO SPECULUM</nazwa>
+            <kategoria_1>Zabawki</kategoria_1>
+            <kategoria_2>BDSM</kategoria_2>
+            <kategoria_3>Zabawki medyczne</kategoria_3>
+            <marka>Toyz4lovers</marka>
+            <cena_netto>15.5900</cena_netto>
+            <stawka_vat>23.0000</stawka_vat>
+            <stan_boss>0.0000</stan_boss>
+            <stan_scala>0.00</stan_scala>
+            <ean>8053629693858</ean>
+            <description>„Ta zabawka erotyczna należy do linii BESTSELLER stworzonej przez Toyz4Lovers: najlepsze produkty kiedykolwiek sprzedane przez MSX Distribution Srl. Zwijacz pochwy to instrument, który został stworzony do użytku ginekologicznego w medycynie, ale można go używać dla przyjemności.</description>
+            <duration>0</duration>
+            <genre/>
+            <disc>0</disc>
+            <package_dimensions/>
+            <package_weight/>
+            <material>PVC;</material>
+            <diameter_inside/><diameter_outside/>
+            <length_shaft/><additional_info/>
+            <body_safe>TAK</body_safe>
+            <vibrating/>
+            <multispeed/>
+            <battery_inclusive/>
+            <stimulating/>
+            <length_total/>
+            <waterproof/>
+            <remote_control/>
+            <functions/>
+            <weight>0.055</weight>
+            <composition/>
+            <volume/>
+        </Record>
+    </Data>
+</Root>

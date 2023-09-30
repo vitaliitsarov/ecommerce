@@ -2,9 +2,12 @@
 
 namespace App\Console\Commands;
 
+use Flowgistics\XML\XML;
 use Illuminate\Console\Command;
 use App\Models\Product;
 use App\Models\Integration;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Log;
 
 class SyncProducts extends Command
 {
@@ -32,19 +35,13 @@ class SyncProducts extends Command
         Log::info('[Sync] Начало интеграции: ' . date('d-m-Y H:i:s'));
 
         foreach ($integrations as $integration) {
-            
-            if($this->downloadFile($integration['url']))
-            {
-
-            }
-
-            
+            $this->downloadFile($integration['url']);
         }
     }
 
-    public function downloadFile(string $url): bool
+    public function downloadFile(string $url): void
     {
-        $file_name = storage_path('app/export/' . basename($url));
+        $file_name = storage_path('export/' . basename($url));
 
 		if (!file_exists($file_name)) {
 			$this->saveFile($file_name, $url);
@@ -57,7 +54,7 @@ class SyncProducts extends Command
 		}
 
         try {
-			$this->proccess();
+			$this->proccess($file_name);
 		} catch (\Exception $error) {
 			Log::info('[Sync] Ошибка: ' . $error->getMessage());
 		}
@@ -67,9 +64,30 @@ class SyncProducts extends Command
 
     }
 
-    public function proccess()
+    public function proccess($file_name)
     {
-        $xml = XML::import($path)->get();
+        $xml = XML::import($file_name)->toArray();
+
+        foreach ($xml['Data'] as $product) {
+            $this->createProduct((array) $product);
+        }
+    }
+
+    public function createProduct(array $product)
+    {
+        Product::updateOrCreate(
+            [
+                'article' => $product['kod']
+            ],
+            [
+                'title' => $product['nazwa'],
+                'body' => $product['description'],
+                'vat' => $product['stawka_vat'],
+                'price_netto' => $product['cena_netto'],
+                'status' => Product::STATUS_ACTIVE,
+                'ean' => $product['ean']
+            ]
+        );
     }
 
     public function saveFile($file_name, $url): bool
