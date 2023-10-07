@@ -13,7 +13,7 @@ Route::get('/product/{id}', [\App\Http\Controllers\ProductController::class, 'sh
 Route::get('/category/{id}', [\App\Http\Controllers\CategoryController::class, 'show'])->name('category.show');
 
 // Checkout
-Route::get('/checkout', \App\Livewire\Checkout::class)->name('checkout.index');
+Route::get('/checkout', [\App\Http\Controllers\CheckoutController::class, 'index'])->name('checkout.index');
 
 
 Route::get('/dashboard', function () {
